@@ -21,17 +21,18 @@
  * </div>
  */
 
-// const parent = React.createElement(
-//   "div",
-//   { id: "parent" },
-//   React.createElement("div", { id: "child" }, [
-//     React.createElement("h1", { id: "heading" }, "h1 tag"),
-//     React.createElement("h2", { id: "heading2" }, "h2 tag"),
-//   ])
-// );
-// const rootContainer = document.getElementById("root");
-// const root = ReactDOM.createRoot(rootContainer);
-// root.render(parent);
+const parent = React.createElement(
+  "div",
+  { id: "parent" },
+  React.createElement("div", { id: "child" }, [
+    React.createElement("h1", { id: "heading" }, "h1 tag"),
+    React.createElement("h2", { id: "heading2" }, "h2 tag"),
+  ])
+);
+console.log(parent);
+const rootContainer = document.getElementById("root");
+const root = ReactDOM.createRoot(rootContainer);
+root.render(parent);
 //-------------------
 /**
  * Nested structure
@@ -47,16 +48,16 @@
  * </div>
  */
 
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", { id: "heading" }, "h1 tag"),
-    React.createElement("h2", { id: "heading2" }, "h2 tag"),
-  ]),
-  React.createElement("div", { id: "child2" }, [
-    React.createElement("h1", { id: "heading" }, "h1 tag"),
-    React.createElement("h2", { id: "heading2" }, "h2 tag"),
-  ]),
-]);
-const rootContainer = document.getElementById("root");
-const root = ReactDOM.createRoot(rootContainer);
-root.render(parent);
+// const parent = React.createElement("div", { id: "parent" }, [
+//   React.createElement("div", { id: "child" }, [
+//     React.createElement("h1", { id: "heading" }, "h1 tag"),
+//     React.createElement("h2", { id: "heading2" }, "h2 tag"),
+//   ]),
+//   React.createElement("div", { id: "child2" }, [
+//     React.createElement("h1", { id: "heading" }, "h1 tag"),
+//     React.createElement("h2", { id: "heading2" }, "h2 tag"),
+//   ]),
+// ]);
+// const rootContainer = document.getElementById("root");
+// const root = ReactDOM.createRoot(rootContainer);
+// root.render(parent);
