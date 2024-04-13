@@ -1,5 +1,5 @@
 import ResCard from "./ResCard";
-import { resList } from "../../list";
+import { resList } from "../utils/list";
 export default Main = () => {
   return (
     <div>
