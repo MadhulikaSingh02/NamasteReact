@@ -4,8 +4,20 @@ import { useState } from "react";
 
 //state variable -  state variables are used to store and manage
 //dynamic data within a component.
-//default value is []
+//default value can be anuthing
 //If i want to pass some default value I will give inside useState()
+
+function searchForRestaurant(allRestaurantList, searchText) {
+  // console.log("Inside click--", searchText);
+  return allRestaurantList.filter((r) =>
+    r?.info?.name.toLowerCase()?.includes(searchText.toLowerCase())
+  );
+}
+function filterRestaurant(allRestaurantList) {
+  return allRestaurantList.filter(
+    (r) => parseFloat(r.info.rating.aggregate_rating) >= 4.0
+  );
+}
 
 export default Main = () => {
   let [allRestaurantList, setAllRestaurantList] = useState(resList);
@@ -30,12 +42,11 @@ export default Main = () => {
           />
           <button
             onClick={() => {
-              console.log("Inside click--", searchText);
-              let filteredlist = allRestaurantList.filter((r) =>
-                r?.info?.name.toLowerCase()?.includes(searchText.toLowerCase())
+              const searchedList = searchForRestaurant(
+                allRestaurantList,
+                searchText
               );
-              console.log(filteredlist);
-              setAllRestaurantList(filteredlist);
+              setAllRestaurantList(searchedList);
             }}
           >
             Search
@@ -46,10 +57,7 @@ export default Main = () => {
             className="filter-btn"
             type="button"
             onClick={() => {
-              console.log("Button clicked");
-              const filteredlist = allRestaurantList.filter(
-                (r) => parseFloat(r.info.rating.aggregate_rating) >= 4.0
-              );
+              const filteredlist = filterRestaurant(allRestaurantList);
               setAllRestaurantList(filteredlist); //here we are invoking a function, diffing algo and then rerendering
             }}
           >

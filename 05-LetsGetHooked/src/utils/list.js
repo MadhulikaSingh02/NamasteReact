@@ -120,7 +120,7 @@ export const resList = [
         url: "https://b.zmtcdn.com/data/pictures/chains/3/19426403/302ccf63f4debef60c5d60888a18b200_o2_featured_v2.jpg",
       },
       rating: {
-        aggregate_rating: "4.1",
+        aggregate_rating: "3.1",
         rating_text: "4.1",
         rating_subtitle: "Very Good",
       },
