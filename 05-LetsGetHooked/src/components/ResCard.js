@@ -12,10 +12,6 @@ export default ResCard = (props) => {
       <h4>{cuisine.join(" ")}</h4>
       <h5>{rating.aggregate_rating}</h5>
       <h5>{costText.text}</h5>
-      {/* <div className="separtor"></div>
-        <div className="safety-msg">
-          <span>Follows all Safety Measures to ensure your food is safe</span>
-        </div> */}
     </div>
   );
 };

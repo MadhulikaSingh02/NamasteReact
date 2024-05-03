@@ -5,7 +5,7 @@ export default Footer = () => {
         <span>
           By continuing past this page, you agree to our Terms of Service,
           Cookie Policy, Privacy Policy and Content Policies. All trademarks are
-          properties of their respective owners. 2008-2024 © Khana Khazana Ltd.
+          properties of their respective owners. 2008-2024 © The Food Truck Ltd.
           All rights reserved.
         </span>
       </div>
