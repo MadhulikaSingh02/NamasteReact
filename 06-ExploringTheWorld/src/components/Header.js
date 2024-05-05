@@ -15,7 +15,12 @@ const Title = () => {
 //Header component for Header Section: Logo, Name, Nav Items
 export default Header = () => {
   //using UseState for user logged in or logged out
-  const [isLoggedIn, setLoggedIn] = useState(true);
+  const [btnName, setBtnName] = useState("Login");
+
+  //Can also be done using login state - true false
+  //const [isLoggedIn, setLoggedIn] = useState(true);
+  //On using regular variables, the btnName does not refresh
+  //When the state variable changes, React triggers Reconcillation algo and re-renders the component
   return (
     <div className="header">
       <Title />
@@ -39,13 +44,19 @@ export default Header = () => {
             </a>
           </li>
           <li>
-            {isLoggedIn ? (
-              <button className="logout-btn" onClick={() => setLoggedIn(false)}>
-                Logout
+            {btnName === "Login" ? (
+              <button
+                className="login-btn"
+                onClick={() => setBtnName("Logout")}
+              >
+                {btnName}
               </button>
             ) : (
-              <button className="login-btn" onClick={() => setLoggedIn(true)}>
-                Login
+              <button
+                className="logout-btn"
+                onClick={() => setBtnName("Login")}
+              >
+                {btnName}
               </button>
             )}
           </li>

@@ -3,7 +3,7 @@ export default ResCard = (props) => {
   // const data = props.resData;
   const { resData } = props; //this means resData = props.resData
   // const { image, name, cuisine, rating, costText } = resData?.info;
-  console.log(resData?.info);
+
   const {
     cloudinaryImageId,
     name,
