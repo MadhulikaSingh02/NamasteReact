@@ -4,6 +4,8 @@ const ShimmerCard = () => {
     <div className="shimmer-card">
       <div className="shimmer-img animation"></div>
       <div className="shimmer-cuisines animation"></div>
+      <div className="shimmer-cuisines animation"></div>
+      <div className="shimmer-cuisines animation"></div>
       <div className="shimmer-info animation"></div>
     </div>
   );

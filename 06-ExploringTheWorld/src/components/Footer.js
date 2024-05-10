@@ -1,14 +1,19 @@
 export default Footer = () => {
+  const year = new Date().getFullYear();
   return (
-    <footer>
-      <div className="copyright">
-        <span>
-          By continuing past this page, you agree to our Terms of Service,
-          Cookie Policy, Privacy Policy and Content Policies. All trademarks are
-          properties of their respective owners. 2008-2024 © The Food Truck Ltd.
-          All rights reserved.
-        </span>
-      </div>
-    </footer>
+    <div className="footer">
+      Created By:
+      <a
+        href="https://www.linkedin.com/in/madhulika-singh-91876a230/"
+        target="_blank"
+      >
+        Madhulika Singh
+      </a>
+      <i className="fa-solid fa-copyright"></i>
+      <span>
+        {year}
+        <strong> The Food Truck</strong>
+      </span>
+    </div>
   );
 };

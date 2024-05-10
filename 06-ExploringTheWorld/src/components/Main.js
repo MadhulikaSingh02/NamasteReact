@@ -4,14 +4,6 @@ import { useState, useEffect } from "react";
 import { SWIGGY_APP_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
 
-//function to search for a restaurant
-function searchForRestaurant(restaurants, searchText) {
-  //When the searchText is "", all the restaurants will be returned since every string includes empty string.
-  return restaurants.filter((r) =>
-    r?.info?.name.toLowerCase()?.includes(searchText.toLowerCase())
-  );
-}
-
 //filter out all restaurants with a rating 4.0 and above
 function filterRestaurant(restaurants) {
   return restaurants.filter((r) => parseFloat(r.info.avgRating) >= 4.0);
@@ -25,15 +17,16 @@ export default Main = () => {
   let [restaurants, setRestaurants] = useState([]);
   let [searchText, setSearchText] = useState("");
   let [filteredList, setFilteredList] = useState([]);
+  let [errorMessage, setErrorMessgae] = useState("");
 
   //useEffect hook to fetch API data after initial Rendering of the page
   //Page loads->Initial Render->Inside useEffect callback API called ->Re-render
   useEffect(() => {
-    fetchRestaurantData();
+    getRestaurants();
   }, []);
 
   //function to fetch SWIGGY Data
-  const fetchRestaurantData = async () => {
+  const getRestaurants = async () => {
     const response = await fetch(SWIGGY_APP_URL);
     const json = await response.json();
 
@@ -57,6 +50,21 @@ export default Main = () => {
     }
   }
 
+  //function to search for a restaurant
+  function searchForRestaurant(restaurants, searchText) {
+    //When the searchText is "", all the restaurants will be returned since every string includes empty string.
+    const searchedList = restaurants.filter((r) =>
+      r?.info?.name.toLowerCase()?.includes(searchText.toLowerCase())
+    );
+    if (searchedList?.length > 0) {
+      setFilteredList(searchedList);
+      setErrorMessgae("");
+    } else {
+      setFilteredList(restaurants);
+      setErrorMessgae("No restaurants found! Please re-try.");
+      setSearchText("");
+    }
+  }
   //First a skeleton is rendered, then useEffect api is invoked
   //This gives a blank screen for a few ms, so instead we can display a loading screen.
   //Instead we use the concept of Shimmer UI
@@ -80,20 +88,17 @@ export default Main = () => {
             id="search-text"
             placeholder="Looking for a restaurant..."
             value={searchText}
-            onChange={(e) => {
-              setSearchText(e.target.value);
-              //if (e.target.value === "") {
-              //fetchRestaurantData(); //Making another fetch call is expensive
-              //Another approach is keep 'restaurants' intact, create another SV for filtered out restaurants
-              //}
-            }}
+            onChange={(e) => setSearchText(e.target.value)}
+            //if (e.target.value === "") {
+            //fetchRestaurantData(); //Making another fetch call is expensive
+            //Another approach is keep 'restaurants' intact, create another SV for filtered out restaurants
+            //}
           />
           <button
             className="search-btn"
             onClick={() => {
               //Filter the restaurant cards and update the UI
-              const searchedList = searchForRestaurant(restaurants, searchText);
-              setFilteredList(searchedList);
+              searchForRestaurant(restaurants, searchText);
             }}
           >
             Search
@@ -112,7 +117,7 @@ export default Main = () => {
           </button>
         </div>
       </div>
-
+      {errorMessage && <div className="error-container">{errorMessage}</div>}
       <div className="res-container">
         {filteredList.map((res) => (
           <ResCard key={res.info?.id} resData={res} />

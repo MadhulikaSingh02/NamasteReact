@@ -11,16 +11,43 @@ const Title = () => {
     </div>
   );
 };
-
+const DisplayButton = ({ btnName, setBtnName }) => {
+  return (
+    <li>
+      {btnName === "Login" ? (
+        <button className="login-btn" onClick={() => setBtnName("Logout")}>
+          {btnName}
+        </button>
+      ) : (
+        <button className="logout-btn" onClick={() => setBtnName("Login")}>
+          {btnName}
+        </button>
+      )}
+    </li>
+  );
+  // <li>
+  //   {isLoggedIn ? (
+  //     <button className="logout-btn" onClick={() => setLoggedIn(false)}>
+  //       Logout
+  //     </button>
+  //   ) : (
+  //     <button className="login-btn" onClick={() => setLoggedIn(true)}>
+  //       Login
+  //     </button>
+  //   )}
+  // </li>
+};
 //Header component for Header Section: Logo, Name, Nav Items
 export default Header = () => {
   //using UseState for user logged in or logged out
   const [btnName, setBtnName] = useState("Login");
 
   //Can also be done using login state - true false
-  //const [isLoggedIn, setLoggedIn] = useState(true);
+  const [isLoggedIn, setLoggedIn] = useState(false);
   //On using regular variables, the btnName does not refresh
-  //When the state variable changes, React triggers Reconcillation algo and re-renders the component
+  //When the state variable changes, React triggers Reconcillation algo and re-renders the component.
+
+  const [isAdmin, setAdmin] = useState(true);
   return (
     <div className="header">
       <Title />
@@ -30,36 +57,21 @@ export default Header = () => {
       <div className="nav-items">
         <ul>
           <li>
-            <a>Home</a>
+            <a href="#">Home</a>
           </li>
           <li>
-            <a>About Us</a>
+            <a href="#">About</a>
           </li>
           <li>
-            <a>Contact</a>
+            <a href="#">Contact</a>
           </li>
           <li>
             <a>
               <i className="fa-solid fa-cart-shopping"></i>
             </a>
           </li>
-          <li>
-            {btnName === "Login" ? (
-              <button
-                className="login-btn"
-                onClick={() => setBtnName("Logout")}
-              >
-                {btnName}
-              </button>
-            ) : (
-              <button
-                className="logout-btn"
-                onClick={() => setBtnName("Login")}
-              >
-                {btnName}
-              </button>
-            )}
-          </li>
+          {isAdmin && isLoggedIn ? <li>Admin</li> : ""}
+          <DisplayButton btnName={btnName} setBtnName={setBtnName} />
         </ul>
       </div>
     </div>
