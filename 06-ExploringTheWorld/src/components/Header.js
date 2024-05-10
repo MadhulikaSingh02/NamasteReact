@@ -11,31 +11,33 @@ const Title = () => {
     </div>
   );
 };
-const DisplayButton = ({ btnName, setBtnName }) => {
+const DisplayButton = ({ isLoggedIn, setLoggedIn }) => {
+  // return (
+  //   <li>
+  //     {btnName === "Login" ? (
+  //       <button className="login-btn" onClick={() => setBtnName("Logout")}>
+  //         {btnName}
+  //       </button>
+  //     ) : (
+  //       <button className="logout-btn" onClick={() => setBtnName("Login")}>
+  //         {btnName}
+  //       </button>
+  //     )}
+  //   </li>
+  // );
   return (
     <li>
-      {btnName === "Login" ? (
-        <button className="login-btn" onClick={() => setBtnName("Logout")}>
-          {btnName}
+      {isLoggedIn ? (
+        <button className="logout-btn" onClick={() => setLoggedIn(false)}>
+          Logout
         </button>
       ) : (
-        <button className="logout-btn" onClick={() => setBtnName("Login")}>
-          {btnName}
+        <button className="login-btn" onClick={() => setLoggedIn(true)}>
+          Login
         </button>
       )}
     </li>
   );
-  // <li>
-  //   {isLoggedIn ? (
-  //     <button className="logout-btn" onClick={() => setLoggedIn(false)}>
-  //       Logout
-  //     </button>
-  //   ) : (
-  //     <button className="login-btn" onClick={() => setLoggedIn(true)}>
-  //       Login
-  //     </button>
-  //   )}
-  // </li>
 };
 //Header component for Header Section: Logo, Name, Nav Items
 export default Header = () => {
@@ -71,7 +73,7 @@ export default Header = () => {
             </a>
           </li>
           {isAdmin && isLoggedIn ? <li>Admin</li> : ""}
-          <DisplayButton btnName={btnName} setBtnName={setBtnName} />
+          <DisplayButton isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} />
         </ul>
       </div>
     </div>

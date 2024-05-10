@@ -32,6 +32,7 @@ export default Main = () => {
 
     //There is an array of cards. Need to fetch the card that has the restaurants
     let restaurantData = isRequiredDataPresent(json);
+    console.log(restaurantData);
     setRestaurants(restaurantData);
 
     //this is done so that the initial rendering shows the cards
