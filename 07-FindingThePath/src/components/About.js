@@ -6,7 +6,9 @@ export default About = () => {
         <h1>
           Welcome to <span>The Food Truck</span>
         </h1>
-        <h3>A place where you are assured to find something of your taste!</h3>
+        <h3>
+          A place where you're guaranteed to discover something to your liking!
+        </h3>
       </div>
       <div className="about-right">
         <img src={food_pizza} alt="Food Image" />
