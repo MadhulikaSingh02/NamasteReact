@@ -266,10 +266,10 @@ a {
 /* About us page CSS Start */
 .about-container {
   display: flex;
-  margin: 100px auto 0px;
+  margin: 0 auto;
   justify-content: center;
   align-items: center;
-  height: 72vh;
+  height: 85.8vh;
   background-color: var(--main-area);
   color: var(--light-text-color);
 }
@@ -291,4 +291,15 @@ a {
 
 .about-right {
   padding-left: 20px;
+}
+
+/* Error page CSS*/
+.error-page {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--main-area);
+  color: var(--light-text-color);
 }
