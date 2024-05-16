@@ -1,15 +1,40 @@
+/* Select all CSS Start*/
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   overflow-x: hidden;
+  box-sizing: border-box;
   font-family: Arial;
 }
+
+/* all link CSS */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Select all CSS End*/
+
+/* create global variable with :root selector Start*/
 :root {
-  --header-footer-bg-color: #87bba2;
+  --header-bg-color: #87bba2;
+  --footer-bg-color: #87bba2;
+  --body-bg-color: #e3e3e3;
+  --input-bg: #f2f2f2;
+  --input-bg-focus: #dbdbdb;
   --main-area: #c9e4ca;
   --app-name: #243119;
   --text-color: #364958;
+  --light-green: #00ad1d;
+  --dark-green: #016034;
+  --orange: #d97919;
+  --light-orange: #ffaf60;
+  --dark-orange: #c26100;
+  --x-dark-orange: rgb(157, 42, 1);
+  --light-red: rgb(236, 56, 56);
+  --light-black: rgb(23, 23, 23);
+  --light-blue: #0463ac;
+  --dark-blue: #070062;
   --light-text-color: #3b6064;
   --light-green: #96be8c;
   --dark-green: #629460;
@@ -17,17 +42,21 @@
   --light-red: rgb(236, 56, 56);
   --custom-messages: #551a8b;
 }
+/* create global variable with :root selector End*/
+
+/* Header CSS Start*/
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100vw;
   height: 80px;
-  background-color: var(--header-footer-bg-color);
-  border-radius: 5px;
-  color: var(--light-text-color);
+  background-color: var(--header-bg-color);
+  box-shadow: -1px 4px 20px 14px rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
   font-weight: bold;
-  /* position: fixed; */
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 999;
@@ -35,10 +64,10 @@
 }
 
 .logo {
-  padding: 10px 0 5px 15px;
+  padding: 10px 0 10px 15px;
   width: 100px;
 }
-img {
+.logo img {
   width: 100%;
 }
 .app-name {
@@ -48,64 +77,84 @@ img {
   font-weight: bolder;
   margin-left: 5rem;
 }
+/* nav items CSS start*/
 .nav-items {
   width: 20vw;
 }
+
 .nav-items > ul {
   list-style-type: none;
   display: flex;
-  justify-content: space-evenly;
-  align-items: baseline;
+  margin-right: 30px;
+  align-items: center;
+  justify-content: space-between;
 }
-a {
-  text-decoration: none;
-  color: var(--white);
-}
+
 .nav-items > ul > li {
-  cursor: pointer;
-  font-size: medium;
+  padding: 10px;
 }
+
+.nav-items > ul > li:hover {
+  background-color: var(--dark-green);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 .nav-items > ul > li .logout-btn,
 .nav-items > ul > li .login-btn {
-  color: var(--white);
-  cursor: pointer;
+  color: var(--text-color);
   border: none;
-  padding: 10px;
-  border-radius: 15px;
-  /* margin-right: 15px; */
-  background-color: var(--light-green);
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: inherit;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-.nav-items > ul > li .logout-btn:hover,
-.nav-items > ul > li .login-btn:hover {
-  background-color: var(--dark-green);
-}
+/* nav items CSS End*/
+/* Header CSS End*/
 
-/* Body css */
-.search-container {
-  position: relative;
-  display: flex;
-  height: 5rem;
-  align-items: center;
-  justify-content: space-evenly;
-  gap: 20px;
+/* Main CSS Start*/
+.main {
   background-color: var(--main-area);
 }
-
-#search-text {
-  width: 30rem;
-  height: 2rem;
-  font-size: medium;
-  padding-left: 0.25rem;
-  border: none;
+/* search container CSS Start*/
+.search-container {
+  margin: 100px auto 20px;
+  text-align: center;
+  max-width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.search-btn {
+.search-container .search-input {
+  width: 20%;
+  box-sizing: border-box;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  background-color: var(--white);
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  padding: 14px 15px 14px 20px;
+  border: 1px solid #aabcca;
+  border-right: 0;
+  color: var(--text-color);
+  outline: none;
   font-size: medium;
+}
+
+.search-container .search-btn {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: var(--dark-orange);
+  /* box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08); */
+  color: var(--white);
+  padding: 15px 22px;
+  /* margin-left: -4px; */
   cursor: pointer;
-  width: 4rem;
-  height: 2rem;
   border: none;
+  outline: none;
 }
 
 .filter-btn {
@@ -113,23 +162,36 @@ a {
   border: none;
   cursor: pointer;
   width: 30rem;
-  height: 2rem;
+  height: 2.8rem;
+  margin-left: 3rem;
+}
+.search-container .search-btn:hover {
+  background-color: var(--dark-green);
 }
 
-.filter-btn:hover,
-.search-btn:hover,
-#search-text:hover {
-  border: 1px solid grey;
-  box-shadow: 10px 5px 15px #6d7272;
+/* Search error message css Start*/
+.error-container {
+  text-align: center;
+  padding: 0.25rem 0;
+  background-color: var(--main-area);
+  font-size: large;
+  font-weight: 600;
+  color: var(--custom-messages);
 }
-/* res-cards from here */
+/* Search error message css End*/
+
+/* search container CSS End*/
+
+/* Restaurant cards CSS Start*/
 .res-container {
+  width: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  background-color: var(--main-area);
-  width: auto;
+  align-items: center;
+  justify-content: center;
+  /* align-self: stretch; */
 }
+
 .res-card {
   width: 240px;
   margin: 1rem;
@@ -138,22 +200,29 @@ a {
   padding: 10px;
   cursor: pointer;
 }
+
 .res-card:hover {
   transform: scale(1.05);
 }
 
 .res-card > img {
+  width: 100%;
   /* max-width: 100px; */
   border-radius: 10px;
 }
 .res-card > h3 {
   color: var(--text-color);
   margin-bottom: 3px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
-
 .res-card > h5 {
   font-weight: bold;
   color: #4e878c;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .res-card > h4 {
   font-weight: bold;
@@ -190,9 +259,11 @@ a {
   padding: 0 5px 3px 0;
 }
 
-/* footer css */
+/* Restaurant cards CSS End*/
+
+/* footer CSS Start*/
 .footer {
-  background-color: var(--header-footer-bg-color);
+  background-color: var(--footer-bg-color);
   text-align: center;
   padding: 1rem;
   font-weight: 400;
@@ -205,8 +276,9 @@ a {
   color: var(--text-color);
   padding: 0.5rem;
 }
+/* footer CSS End*/
 
-/* Shimmer UI css */
+/*Shimmer Card CSS Start*/
 .shimmer-container {
   display: flex;
   flex-wrap: wrap;
@@ -252,28 +324,50 @@ a {
     background-position: 500px 0;
   }
 }
+/*Animation to Shimmer Component Card and Menu card End*/
 
-/*Error container */
-.error-container {
+/* Body CSS End*/
+
+/* Error page CSS Start */
+.error-page {
   text-align: center;
-  padding: 0.25rem 0;
-  background-color: var(--main-area);
-  font-size: large;
-  font-weight: 600;
-  color: var(--custom-messages);
+  background-color: var(--body-bg-color);
+  height: 100vh;
+  width: auto;
+}
+.error-page .error-data {
+  padding: 10px 0px;
 }
 
+.error-page .error-back-home {
+  padding: 20px;
+}
+.error-page .error-back-home a {
+  text-decoration: none;
+  background-color: var(--orange);
+  color: var(--light-black);
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.error-page .error-back-home a:hover {
+  background-color: var(--dark-green);
+}
+
+/* Error page CSS End */
+
 /* About us page CSS Start */
+.about {
+  background-color: var(--main-area);
+  height: 94.5vh;
+}
 .about-container {
   display: flex;
   margin: 0 auto;
   justify-content: center;
   align-items: center;
-  height: 85.8vh;
-  background-color: var(--main-area);
   color: var(--light-text-color);
 }
-
 .about-left h1 {
   font-size: 70px;
 }
@@ -292,14 +386,4 @@ a {
 .about-right {
   padding-left: 20px;
 }
-
-/* Error page CSS*/
-.error-page {
-  display: flex;
-  margin: 0 auto;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: var(--main-area);
-  color: var(--light-text-color);
-}
+/* About us page CSS End */
