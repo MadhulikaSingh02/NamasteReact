@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { APP_LOGO } from "../utils/constants";
+import { Link } from "react-router-dom";
 
 //Title component for displaying Logo
 const Title = () => {
@@ -59,13 +60,14 @@ export default Header = () => {
       <div className="nav-items">
         <ul>
           <li>
-            <a href="#">Home</a>
+            {/* <a href="/">Home</a> */}
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="/about">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <a href="/contact">Contact</a>
+            <Link to="/contact">Contact</Link>
           </li>
           <li>
             <a>
