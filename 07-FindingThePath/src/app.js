@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -13,25 +13,35 @@ const AppLayout = () => {
   return (
     <div className="food-app">
       <Header />
-      <Main />
+      {/* if path=/, then render Body  */}
+      {/* if path=/about, then render About */}
+      <Outlet />{" "}
+      {/*Outlet must be used in the parent route element to render its child route element */}
       <Footer />
     </div>
   );
 };
 
+//<About/> and <Contact/> are now children of AppLayout
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <AppLayout />,
+    element: <AppLayout />, //parent route element
+    children: [
+      {
+        path: "/",
+        element: <Main />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
     errorElement: <Error />,
-  },
-  {
-    path: "/about",
-    element: <About />,
-  },
-  {
-    path: "/contact",
-    element: <Contact />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));
