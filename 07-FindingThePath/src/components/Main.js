@@ -110,29 +110,29 @@ export default Main = () => {
   ) : (
     <div className="main">
       <div className="search-container">
-        <div className="search-input">
-          <input
-            type="text"
-            name="search"
-            id="search-text"
-            placeholder="Looking for a restaurant..."
-            value={searchText}
-            onChange={(e) => setSearchText(e.target.value)}
-            //if (e.target.value === "") {
-            //fetchRestaurantData(); //Making another fetch call is expensive
-            //Another approach is keep 'restaurants' intact, create another SV for filtered out restaurants
-            //}
-          />
-          <button
-            className="search-btn"
-            onClick={() => {
-              //Filter the restaurant cards and update the UI
-              searchForRestaurant(restaurants, searchText);
-            }}
-          >
-            Search
-          </button>
-        </div>
+        <input
+          type="text"
+          name="search"
+          className="search-input"
+          id="search-text"
+          placeholder="Looking for a restaurant..."
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+          //if (e.target.value === "") {
+          //fetchRestaurantData(); //Making another fetch call is expensive
+          //Another approach is keep 'restaurants' intact, create another SV for filtered out restaurants
+          //}
+        />
+        <button
+          className="search-btn"
+          onClick={() => {
+            //Filter the restaurant cards and update the UI
+            searchForRestaurant(restaurants, searchText);
+          }}
+        >
+          Search
+        </button>
+
         <div className="filter">
           <button
             className="filter-btn"

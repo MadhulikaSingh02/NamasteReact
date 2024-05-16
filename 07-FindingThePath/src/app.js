@@ -8,6 +8,7 @@ import Main from "./components/Main";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
+import { ResMenu } from "./components/ResMenu";
 
 const AppLayout = () => {
   return (
@@ -39,6 +40,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/restaurants/:resId", //for dynamic rendering
+        element: <ResMenu />,
       },
     ],
     errorElement: <Error />,
