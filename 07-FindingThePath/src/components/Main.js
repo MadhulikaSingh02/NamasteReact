@@ -39,15 +39,43 @@ export default Main = () => {
     setFilteredList(restaurantData);
   };
 
-  //Getting the required
+  //Getting the required restuarants from the api
   function isRequiredDataPresent(json) {
+    let restaurants = [];
     for (let i = 0; i < json?.data?.cards.length; ++i) {
-      const restaurants =
+      let resArr =
         json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants;
-      if (restaurants !== undefined) {
-        return restaurants;
+
+      if (resArr) restaurants = [...restaurants, ...resArr];
+    }
+    //Remove any duplicate restaurants,otherwise {key} will be duplicated, throwing an error
+    if (restaurants?.length > 0) {
+      // Declare a new array
+      let uniqueRestaurants = [];
+
+      // Declare an empty object
+      let uniqueObject = {};
+
+      // Loop for the array elements
+      for (let i in restaurants) {
+        //Extract the restaurant.info.id for each restaurant
+        let objectId = restaurants[i].info.id;
+
+        // Use the id as the index - object of objects
+        uniqueObject[objectId] = restaurants[i];
       }
+      // uniqueObject={
+      //   1308:{...},
+      //   2345:{ ..},
+      //   6754:{..}
+      // }
+
+      // Loop to push unique object into array
+      for (let ind in uniqueObject) {
+        uniqueRestaurants.push(uniqueObject[ind]);
+      }
+      return uniqueRestaurants;
     }
   }
 
@@ -80,7 +108,7 @@ export default Main = () => {
   return restaurants?.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
+    <div className="main">
       <div className="search-container">
         <div className="search-input">
           <input
