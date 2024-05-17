@@ -1,14 +1,16 @@
-import { useRouteError } from "react-router-dom";
+import { useRouteError, Link } from "react-router-dom"; // import useRouteError for routing error
+
+import errorImg from "../images/404-error.jpg";
 const Error = () => {
-  const error = useRouteError();
-  console.log(error);
+  const error = useRouteError(); //call useRouteError to get complete error object
   return (
     <div className="error-page">
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
-      <p>
-        <i>{error.statusText || error.message}</i>
-      </p>
+      <img src={errorImg} alt="Food Image" />
+      <h3>Oops! We are unable to find the restaurant you are looking for.</h3>
+      <p>{error.data} </p>
+      <h3 className="error-home">
+        <Link to="/">Back Home</Link>
+      </h3>
     </div>
   );
 };

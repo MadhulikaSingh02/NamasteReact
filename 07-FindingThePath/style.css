@@ -19,7 +19,6 @@ a {
 :root {
   --header-bg-color: #87bba2;
   --footer-bg-color: #87bba2;
-  --body-bg-color: #e3e3e3;
   --input-bg: #f2f2f2;
   --input-bg-focus: #dbdbdb;
   --main-area: #c9e4ca;
@@ -327,30 +326,30 @@ a {
 
 /* Error page CSS Start */
 .error-page {
-  text-align: center;
-  background-color: var(--body-bg-color);
+  background-color: var(--main-area);
   height: 100vh;
-  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.error-page .error-data {
-  padding: 10px 0px;
+.error-page h3,
+.error-page p {
+  padding-top: 10px;
 }
-
-.error-page .error-back-home {
-  padding: 20px;
+.error-data {
+  opacity: 0.7;
 }
-.error-page .error-back-home a {
-  text-decoration: none;
-  background-color: var(--orange);
-  color: var(--light-black);
+.error-home {
+  background-color: var(--dark-orange);
+  color: var(--white);
   padding: 10px 15px;
   border-radius: 5px;
 }
 
-.error-page .error-back-home a:hover {
+.error-home:hover {
   background-color: var(--dark-green);
 }
-
 /* Error page CSS End */
 
 /* About us page CSS Start */
@@ -439,3 +438,4 @@ a {
 .r-total-rating {
   margin-left: -1.5rem;
 }
+/*Restaurant Menu End*/
