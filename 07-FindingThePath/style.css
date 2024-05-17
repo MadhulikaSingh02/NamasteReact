@@ -25,13 +25,10 @@ a {
   --main-area: #c9e4ca;
   --app-name: #243119;
   --text-color: #364958;
-  --light-green: #00ad1d;
-  --dark-green: #016034;
   --orange: #d97919;
   --light-orange: #ffaf60;
   --dark-orange: #c26100;
   --x-dark-orange: rgb(157, 42, 1);
-  --light-red: rgb(236, 56, 56);
   --light-black: rgb(23, 23, 23);
   --light-blue: #0463ac;
   --dark-blue: #070062;
@@ -382,8 +379,63 @@ a {
   padding-top: 10px;
   font-style: italic;
 }
-
 .about-right {
   padding-left: 20px;
 }
 /* About us page CSS End */
+
+/*Restaurant Menu Start*/
+.restaurant-menu-container {
+  margin-top: 80px;
+  min-height: 80vh;
+  width: auto;
+  background-color: var(--main-area);
+}
+.r-info {
+  display: flex;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-text-color);
+  color: var(--white);
+}
+.r-img {
+  width: 250px;
+  height: 170px;
+  border-radius: 5px;
+}
+.r-info-details {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+.r-info-details > h2 {
+  font-size: 40px;
+  font-weight: 300;
+}
+.r-info-details > p {
+  opacity: 0.7;
+  font-size: 15px;
+}
+.r-rating-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  width: 25vw;
+  opacity: 0.7;
+}
+
+.r-rating {
+  display: flex;
+  align-items: center;
+  padding: 5px 8px;
+  gap: 5px;
+  background-color: var(--dark-green);
+  border-radius: 5px;
+}
+.r-total-rating {
+  margin-left: -1.5rem;
+}
