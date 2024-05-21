@@ -1,9 +1,6 @@
 import { IMAGE_CDN_URL } from "../utils/constants";
 export default ResCard = (props) => {
-  // const data = props.resData;
   const { resData } = props; //this means resData = props.resData
-  // const { image, name, cuisine, rating, costText } = resData?.info;
-
   const {
     cloudinaryImageId,
     name,

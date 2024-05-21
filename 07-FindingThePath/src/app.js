@@ -8,7 +8,7 @@ import Main from "./components/Main";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
-import { ResMenu } from "./components/ResMenu";
+import { RestaurantMenu } from "./components/menu/RestaurantMenu";
 
 const AppLayout = () => {
   return (
@@ -43,7 +43,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/restaurants/:resId", //for dynamic rendering
-        element: <ResMenu />,
+        element: <RestaurantMenu />,
       },
     ],
     errorElement: <Error />,

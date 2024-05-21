@@ -1,9 +1,8 @@
-import ResCard from "./ResCard";
-// import { resList } from "../utils/list";
 import { useState, useEffect } from "react";
-import { SWIGGY_APP_URL } from "../utils/constants";
-import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import { SWIGGY_APP_URL } from "../utils/constants";
+import RestaurantCard from "./RestaurantCard";
+import Shimmer from "./Shimmer";
 
 //filter out all restaurants with a rating 4.0 and above
 function filterRestaurant(restaurants) {
@@ -151,7 +150,7 @@ export default Main = () => {
       <div className="res-container">
         {filteredList.map((res) => (
           <Link key={res.info?.id} to={"/restaurants/" + res.info?.id}>
-            <ResCard resData={res} />
+            <RestaurantCard resData={res} />
           </Link>
         ))}
       </div>

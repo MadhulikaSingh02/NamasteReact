@@ -11,6 +11,17 @@ const ShimmerCard = () => {
   );
 };
 
+export const MenuShimmer = () => {
+  return (
+    <div className="shimmer-menu-container">
+      <div className="shimmer-res-menu">
+        {new Array(SHIMMER_CARD_COUNT).fill(0).map((c, index) => (
+          <ShimmerCard key={index} />
+        ))}
+      </div>
+    </div>
+  );
+};
 export default Shimmer = () => {
   return (
     <div className="shimmer-container">
