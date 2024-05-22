@@ -126,7 +126,6 @@ a {
 
 .search-container .search-input {
   width: 20%;
-  box-sizing: border-box;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
   background-color: var(--white);
@@ -364,7 +363,8 @@ a {
 /* Error page CSS End */
 
 /* About us page CSS Start */
-.about {
+.about,
+.login {
   background-color: var(--main-area);
   height: 94.5vh;
 }
@@ -393,6 +393,66 @@ a {
   padding-left: 20px;
 }
 /* About us page CSS End */
+/* Login form CSS Start*/
+.login-container {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  color: var(--light-text-color);
+}
+
+.login-form {
+  width: 28vw;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: -1px 14px 20px 14px rgba(0, 0, 0, 0.2);
+}
+.login-form span {
+  font-size: 40px;
+  color: #4b6cb7;
+  margin-bottom: 25px;
+  display: block;
+  text-align: center;
+  border-bottom: 4px solid var(--light-blue);
+}
+
+.login-form input {
+  outline: 0;
+  background: var(--input-bg);
+  width: 100%;
+  border-radius: 5px;
+  margin: 0 0 15px;
+  padding: 15px;
+  border: 1px solid #aabcca;
+  color: var(--text-color);
+  outline: none;
+  font-size: medium;
+}
+
+.login-form input:focus {
+  background: var(--input-bg-focus);
+}
+
+.login-form button {
+  background-color: var(--dark-orange);
+  width: 100%;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: medium;
+  /* -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease; */
+  color: var(--white);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.login-form button:hover,
+.login-form button:active {
+  background-color: var(--dark-green);
+}
+/* Login form CSS End*/
 
 /*Restaurant Menu Start*/
 .restaurant-menu-container {

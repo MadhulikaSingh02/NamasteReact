@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { APP_LOGO } from "../utils/constants";
 import { Link } from "react-router-dom";
 
@@ -6,13 +8,18 @@ import { Link } from "react-router-dom";
 const Title = () => {
   return (
     <div className="logo">
-      <a href="/">
+      <Link to="/">
         <img src={APP_LOGO} alt="Food Truck Logo" />
-      </a>
+      </Link>
     </div>
   );
 };
 const DisplayButton = ({ isLoggedIn, setLoggedIn }) => {
+  let navigate = useNavigate(); //The useNavigate() hook returns a function that lets you navigate programatically,
+  //for ex: in an effect, onClicks etc.
+  //useNavigate is used to programmatically redirect to certain URL based on a event or a condition,
+  //while Link is more like React version of HTML <a> tag, which redirects to specified URL based on onClick event.
+
   // return (
   //   <li>
   //     {btnName === "Login" ? (
@@ -33,7 +40,14 @@ const DisplayButton = ({ isLoggedIn, setLoggedIn }) => {
           Logout
         </button>
       ) : (
-        <button className="login-btn" onClick={() => setLoggedIn(true)}>
+        <button
+          className="login-btn"
+          onClick={() => {
+            console.log("login clicked");
+            setLoggedIn(true);
+            navigate("/login");
+          }}
+        >
           Login
         </button>
       )}
@@ -74,7 +88,7 @@ export default Header = () => {
               <i className="fa-solid fa-cart-shopping"></i>
             </a>
           </li>
-          {isAdmin && isLoggedIn ? <li>Admin</li> : ""}
+          {/* {isAdmin && isLoggedIn ? <li>Admin</li> : ""} */}
           <DisplayButton isLoggedIn={isLoggedIn} setLoggedIn={setLoggedIn} />
         </ul>
       </div>
