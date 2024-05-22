@@ -452,6 +452,13 @@ a {
 .login-form button:active {
   background-color: var(--dark-green);
 }
+
+.login-error {
+  margin: -10px 0 15px;
+  font-size: large;
+  font-weight: 600;
+  color: var(--custom-messages);
+}
 /* Login form CSS End*/
 
 /*Restaurant Menu Start*/

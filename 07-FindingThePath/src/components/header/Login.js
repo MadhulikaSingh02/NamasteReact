@@ -39,7 +39,11 @@ function Login() {
             value={formik.values.firstName}
           />
         </label>
-        {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : ""}
+        {formik.errors.firstName ? (
+          <div className="login-error">{formik.errors.firstName}</div>
+        ) : (
+          ""
+        )}
         <label htmlFor="lastName">
           <input
             id="lastName"
@@ -50,7 +54,11 @@ function Login() {
             value={formik.values.lastName}
           />
         </label>
-        {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : ""}
+        {formik.errors.lastName ? (
+          <div className="login-error">{formik.errors.lastName}</div>
+        ) : (
+          ""
+        )}
         <label htmlFor="email">
           <input
             id="email"
@@ -61,14 +69,20 @@ function Login() {
             value={formik.values.email}
           />
         </label>
-        {formik.errors.email ? <div>{formik.errors.email}</div> : ""}
+        {formik.errors.email ? (
+          <div className="login-error">{formik.errors.email}</div>
+        ) : (
+          ""
+        )}
         <button type="submit">Submit</button>
       </form>
     </div>
   );
 }
 
-// A custom validation function. This must return an object whose keys are symmetrical to our values/initialValues
+// A custom validation function. This must return an object whose keys are symmetrical to our values/initialValues.
+//By default, Formik will validate after each keystroke (change event), each input’s blur event, as well as prior to submission.
+//The onSubmit function we passed in useFormik() will be executed only if there are no errors (i.e. if our validate function returns {})
 const validate = (values) => {
   const errors = {};
   if (!values.firstName) {
