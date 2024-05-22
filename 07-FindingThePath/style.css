@@ -472,10 +472,15 @@ a {
   border: none;
   background-color: transparent;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 /*Restaurant Categories End*/
 
 /*Restaurant Menu Items Start*/
+/* .category-menu-items {//do not use this,because hidden elements are still alive.Instead use conditional rendering
+  visibility: hidden;
+  display: none;
+} */
 .menu-item {
   display: flex;
   justify-content: space-between;

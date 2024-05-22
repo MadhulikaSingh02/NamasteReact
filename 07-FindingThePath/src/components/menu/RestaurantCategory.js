@@ -1,22 +1,26 @@
 import { useState } from "react";
 import MenuItem from "./MenuItem";
 
-const DisplayArrowButton = ({ isVisible, setIsVisible }) => {
-  // arrow-down - Menu displayed //Collapse - Hide menus
-  //Display arrow-up - Expand -Show menus
+const DisplayArrowButton = ({ isUpArrowVisible, setIsUpArrowVisible }) => {
   return (
     <div className="visible-arrows">
-      {isVisible ? (
+      {isUpArrowVisible ? (
         <button
           className="visible-arrows-up"
-          onClick={() => setIsVisible(false)}
+          onClick={() => {
+            console.log(isUpArrowVisible, "setting upArrow  - false");
+            setIsUpArrowVisible(false);
+          }}
         >
           <i className="fa-solid fa-angle-up"></i>
         </button>
       ) : (
         <button
           className="visible-arrows-down"
-          onClick={() => setIsVisible(true)}
+          onClick={() => {
+            console.log(isUpArrowVisible, "setting upArrow  - true");
+            setIsUpArrowVisible(true);
+          }}
         >
           <i className="fa-solid fa-angle-down"></i>
         </button>
@@ -27,7 +31,10 @@ const DisplayArrowButton = ({ isVisible, setIsVisible }) => {
 
 export default RestaurantCategory = (props) => {
   const { category } = props;
-  const [isVisible, setIsVisible] = useState(true);
+
+  //Initially when the page loads, uparrow and menu displayed - Done
+  //Click on up arrow, toggle to down and no content for that category
+  const [isUpArrowVisible, setIsUpArrowVisible] = useState(true);
 
   return (
     <div className="restaurant-category">
@@ -36,16 +43,22 @@ export default RestaurantCategory = (props) => {
           {category.title}
           <span>({category.itemCards.length})</span>
         </div>
-        <DisplayArrowButton isVisible={isVisible} setIsVisible={setIsVisible} />
+        <DisplayArrowButton
+          isUpArrowVisible={isUpArrowVisible}
+          setIsUpArrowVisible={setIsUpArrowVisible}
+        />
       </div>
-
-      <div className="category-menu-items">
-        <ul>
-          {category.itemCards.map((item) => (
-            <MenuItem key={item.card.info.id} itemInfo={item.card.info} />
-          ))}
-        </ul>
-      </div>
+      {isUpArrowVisible ? (
+        <div className="category-menu-items">
+          <ul>
+            {category.itemCards.map((item) => (
+              <MenuItem key={item.card.info.id} itemInfo={item.card.info} />
+            ))}
+          </ul>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };
