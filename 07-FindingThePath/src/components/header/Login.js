@@ -36,10 +36,11 @@ function Login() {
             type="text"
             placeholder="Enter your first name"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             value={formik.values.firstName}
           />
         </label>
-        {formik.errors.firstName ? (
+        {formik.touched.firstName && formik.errors.firstName ? (
           <div className="login-error">{formik.errors.firstName}</div>
         ) : (
           ""
@@ -51,10 +52,11 @@ function Login() {
             type="text"
             placeholder="Enter your last name"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             value={formik.values.lastName}
           />
         </label>
-        {formik.errors.lastName ? (
+        {formik.touched.lastName && formik.errors.lastName ? (
           <div className="login-error">{formik.errors.lastName}</div>
         ) : (
           ""
@@ -66,10 +68,11 @@ function Login() {
             type="email"
             placeholder="Enter your email id"
             onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
             value={formik.values.email}
           />
         </label>
-        {formik.errors.email ? (
+        {formik.touched.email && formik.errors.email ? (
           <div className="login-error">{formik.errors.email}</div>
         ) : (
           ""
@@ -107,3 +110,10 @@ const validate = (values) => {
 };
 
 export default Login;
+//Q-why are we using onBlur ={formik.handleBlur}
+//Though the form works even when using onChange event only, it is not a great user experience.
+//Since the validation function validate() runs on each keystroke against the entire form's 'values' , the error object contains all the
+//validation errors at any given time. Say I enter an incorrect email id without entering the first name, 2 errors will be displayed.
+//That means, errors are displayed for fields that are not visited also.
+//Solution : Formik keeps track of which fields are visited. This information is stored in an object called 'touched'. The key is the field name,
+//value is either true/false. Use 'touched' property alongwith onBlur={formik.handleBlur} to each input.
