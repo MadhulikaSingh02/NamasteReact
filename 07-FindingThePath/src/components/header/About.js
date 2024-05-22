@@ -1,4 +1,4 @@
-import food_pizza from "../images/food_pizza.jpg";
+import food_pizza from "../../images/food_pizza.jpg";
 export default About = () => {
   return (
     <div className="about-container about">
