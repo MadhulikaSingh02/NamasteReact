@@ -182,6 +182,7 @@ a {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  min-height: 76vh;
   /* align-self: stretch; */
 }
 
@@ -364,7 +365,8 @@ a {
 
 /* About us page CSS Start */
 .about,
-.login {
+.login,
+.contact {
   background-color: var(--main-area);
   height: 94.5vh;
 }
@@ -393,8 +395,27 @@ a {
   padding-left: 20px;
 }
 /* About us page CSS End */
+
+/* Contact form CSS Start */
+.form-textarea {
+  width: 100%;
+  height: 6rem;
+  outline: 0;
+  background: var(--input-bg);
+  border-radius: 5px;
+  margin: 0 0 15px;
+  padding: 0.75rem;
+  border: 1px solid #aabcca;
+  color: var(--text-color);
+  outline: none;
+  font-size: medium;
+}
+
+/* Contact form CSS End */
+
 /* Login form CSS Start*/
-.login-container {
+.login-container,
+.contact-container {
   display: flex;
   margin: 0 auto;
   justify-content: center;
@@ -402,13 +423,15 @@ a {
   color: var(--light-text-color);
 }
 
-.login-form {
+.login-form,
+.contact-form {
   width: 28vw;
   padding: 10px;
   border-radius: 10px;
   box-shadow: -1px 14px 20px 14px rgba(0, 0, 0, 0.2);
 }
-.login-form span {
+.login-form span,
+.contact-form span {
   font-size: 40px;
   color: #4b6cb7;
   margin-bottom: 25px;
@@ -416,8 +439,15 @@ a {
   text-align: center;
   border-bottom: 4px solid var(--light-blue);
 }
-
-.login-form input {
+.contact-message {
+  font-size: 1.5rem;
+  color: #4b6cb7;
+  margin: 25px 0;
+  /* display: block; */
+  text-align: center;
+}
+.login-form input,
+.contact-form input {
   outline: 0;
   background: var(--input-bg);
   width: 100%;
@@ -430,11 +460,13 @@ a {
   font-size: medium;
 }
 
-.login-form input:focus {
+.login-form input:focus,
+.contact-form input:focus {
   background: var(--input-bg-focus);
 }
 
-.login-form button {
+.login-form button,
+.contact-form button {
   background-color: var(--dark-orange);
   width: 100%;
   border-radius: 5px;
@@ -449,11 +481,13 @@ a {
 }
 
 .login-form button:hover,
-.login-form button:active {
+.login-form button:active,
+.contact-form button:hover {
   background-color: var(--dark-green);
 }
 
-.login-error {
+.login-error,
+.contact-error {
   margin: -10px 0 15px;
   font-size: large;
   font-weight: 600;
@@ -530,7 +564,7 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 1rem 0;
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 300;
   border-bottom: 4px solid var(--light-blue);
 }

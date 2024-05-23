@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Title = () => {
   return (
     <div className="logo">
-      <Link to="/">
+      <Link to="/restaurants">
         <img src={APP_LOGO} alt="Food Truck Logo" />
       </Link>
     </div>
@@ -45,7 +45,7 @@ const DisplayButton = ({ isLoggedIn, setLoggedIn }) => {
           onClick={() => {
             console.log("login clicked");
             setLoggedIn(true);
-            navigate("/login");
+            navigate("/");
           }}
         >
           Login
@@ -75,7 +75,7 @@ export default Header = () => {
         <ul>
           <li>
             {/* <a href="/">Home</a> */}
-            <Link to="/">Home</Link>
+            <Link to="/restaurants">Home</Link>
           </li>
           <li>
             <Link to="/about">About</Link>

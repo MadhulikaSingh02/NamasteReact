@@ -17,7 +17,7 @@ const AppLayout = () => {
       <Header />
       {/* if path=/, then render Body  */}
       {/* if path=/about, then render About */}
-      <Outlet />{" "}
+      <Outlet />
       {/*Outlet must be used in the parent route element to render its child route element */}
       <Footer />
     </div>
@@ -25,14 +25,44 @@ const AppLayout = () => {
 };
 
 //<About/> and <Contact/> are now children of AppLayout
+// const appRouter = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <AppLayout />, //parent route element
+//     children: [
+//       {
+//         path: "/",
+//         element: <Main />,
+//       },
+//       {
+//         path: "/about",
+//         element: <About />,
+//       },
+//       {
+//         path: "/contact",
+//         element: <Contact />,
+//       },
+//       {
+//         path: "/login",
+//         element: <Login />,
+//       },
+//       {
+//         path: "/restaurants/:resId", //for dynamic rendering
+//         element: <RestaurantMenu />,
+//       },
+//     ],
+//     errorElement: <Error />,
+//   },
+// ]);
 const appRouter = createBrowserRouter([
   {
     path: "/",
     element: <AppLayout />, //parent route element
+    errorElement: <Error />,
     children: [
       {
         path: "/",
-        element: <Main />,
+        element: <Login />,
       },
       {
         path: "/about",
@@ -43,15 +73,14 @@ const appRouter = createBrowserRouter([
         element: <Contact />,
       },
       {
-        path: "/login",
-        element: <Login />,
+        path: "/restaurants",
+        element: <Main />,
       },
       {
         path: "/restaurants/:resId", //for dynamic rendering
         element: <RestaurantMenu />,
       },
     ],
-    errorElement: <Error />,
   },
 ]);
 const root = ReactDOM.createRoot(document.getElementById("root"));

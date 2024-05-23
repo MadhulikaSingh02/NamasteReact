@@ -5,139 +5,88 @@ Getting values in and out of form state
 Validation and error messages
 Handling form submission*/
 
-import { Formik, useFormik } from "formik";
+import { Formik, useFormik, Field, Form, ErrorMessage } from "formik";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 function Login() {
-  // console.log(useFormik({}));
   // Pass the useFormik() hook initial form values and a submit function that will
   // be called when the form is submitted.
   // Note that we have to initialize ALL of fields with values. These could come from props, but since we don’t want to prefill this form,
   // we just use an empty string. If we don’t do this, React will yell at us.
-  // const formik = useFormik({
-  //   initialValues: {
-  //     email: "",
-  //     firstName: "",
-  //     lastName: "",
-  //   },
-  //   // validate,
-  //   validationSchema: Yup.object({
-  //     firstName: Yup.string()
-  //       .max(15, "Must be 15 characters or less")
-  //       .required("Required"),
-  //     lastName: Yup.string()
-  //       .max(20, "Must be 20 characters or less")
-  //       .required("Required"),
-  //     email: Yup.string().email("Invalid email address").required("Required"),
-  //   }),
-  //   onSubmit: (values) => {
-  //     console.log(JSON.stringify(values, null, 5));
-  //   },
-  // });
+  const navigate = useNavigate();
+  const valSchema = Yup.object({
+    userName: Yup.string()
+      .max(15, "Must be 15 characters or less")
+      .required("Required"),
+    password: Yup.string().min(6, "Min 6-digits").required("Required"),
+    email: Yup.string().email("Invalid email address").required("Required"),
+  });
+
+  const handleSubmit = (values, { setSubmitting }) => {
+    setTimeout(() => {
+      // alert(JSON.stringify(values, null, 2));
+      setSubmitting(false);
+      navigate("/restaurants");
+    }, 400);
+  };
 
   return (
     <Formik
-      initialValues={{ email: "", firstName: "", lastName: "" }}
-      validationSchema={Yup.object({
-        firstName: Yup.string()
-          .max(15, "Must be 15 characters or less")
-          .required("Required"),
-        lastName: Yup.string()
-          .max(20, "Must be 20 characters or less")
-          .required("Required"),
-        email: Yup.string().email("Invalid email address").required("Required"),
-      })}
-      onSubmit={(values, { setSubmitting }) => {
-        console.log({ setSubmitting });
-        setTimeout(() => {
-          alert(JSON.stringify(values, null, 2));
-          setSubmitting(false);
-        }, 400);
-      }}
+      initialValues={{ email: "", userName: "", password: "" }}
+      validationSchema={valSchema}
+      onSubmit={handleSubmit}
     >
-      {(formik) => (
-        <div className="login-container login">
-          <form className="login-form" onSubmit={formik.handleSubmit}>
-            <span>Login</span>
-            <label htmlFor="firstName">
-              <input
-                id="firstName"
-                name="firstName"
-                type="text"
-                placeholder="Enter your first name"
-                {...formik.getFieldProps("firstName")}
-                // onChange={formik.handleChange}
-                // onBlur={formik.handleBlur}
-                // value={formik.values.firstName}
-              />
-            </label>
-            {formik.touched.firstName && formik.errors.firstName ? (
-              <div className="login-error">{formik.errors.firstName}</div>
-            ) : (
-              ""
-            )}
-            <label htmlFor="lastName">
-              <input
-                id="lastName"
-                name="lastName"
-                type="text"
-                placeholder="Enter your last name"
-                {...formik.getFieldProps("lastName")}
-              />
-            </label>
-            {formik.touched.lastName && formik.errors.lastName ? (
-              <div className="login-error">{formik.errors.lastName}</div>
-            ) : (
-              ""
-            )}
-            <label htmlFor="email">
-              <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Enter your email id"
-                {...formik.getFieldProps("email")}
-              />
-            </label>
-            {formik.touched.email && formik.errors.email ? (
-              <div className="login-error">{formik.errors.email}</div>
-            ) : (
-              ""
-            )}
-            <button type="submit">Submit</button>
-          </form>
-        </div>
-      )}
+      <div className="login-container login">
+        <Form className="login-form">
+          <span>Login</span>
+          <label htmlFor="userName">
+            <Field
+              name="userName"
+              id="userName"
+              type="text"
+              placeholder="Enter your name"
+            />
+          </label>
+          <div className="login-error">
+            <ErrorMessage name="userName" />
+          </div>
+
+          <label htmlFor="password">
+            <Field
+              name="password"
+              id="password"
+              type="password"
+              placeholder="Enter your password"
+            />
+          </label>
+          <div className="login-error">
+            <ErrorMessage name="password" />
+          </div>
+
+          <label htmlFor="email">
+            <Field
+              name="email"
+              id="email"
+              type="email"
+              placeholder="Enter your email id"
+            />
+          </label>
+          <div className="login-error">
+            <ErrorMessage name="email" />
+          </div>
+          <button type="submit">Submit</button>
+        </Form>
+      </div>
     </Formik>
   );
 }
+export default Login;
 
+//Refer https://formik.org/docs/tutorial
 // A custom validation function. This must return an object whose keys are symmetrical to our values/initialValues.
 //By default, Formik will validate after each keystroke (change event), each input’s blur event, as well as prior to submission.
 //The onSubmit function we passed in useFormik() will be executed only if there are no errors (i.e. if our validate function returns {})
-const validate = (values) => {
-  const errors = {};
-  if (!values.firstName) {
-    errors.firstName = "Required";
-  } else if (values.firstName.length > 15) {
-    errors.firstName = "Must be 15 characters or less";
-  }
 
-  if (!values.lastName) {
-    errors.lastName = "Required";
-  } else if (values.lastName.length > 20) {
-    errors.lastName = "Must be 20 characters or less";
-  }
-
-  if (!values.email) {
-    errors.email = "Required";
-  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = "Invalid email address";
-  }
-
-  return errors;
-};
-
-export default Login;
 //Q-why are we using onBlur ={formik.handleBlur}
 //Though the form works even when using onChange event only, it is not a great user experience.
 //Since the validation function validate() runs on each keystroke against the entire form's 'values' , the error object contains all the
