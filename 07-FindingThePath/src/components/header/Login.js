@@ -6,7 +6,7 @@ Validation and error messages
 Handling form submission*/
 
 import { useFormik } from "formik";
-
+import * as Yup from "yup";
 function Login() {
   // console.log(useFormik({}));
   // Pass the useFormik() hook initial form values and a submit function that will
@@ -17,11 +17,20 @@ function Login() {
     initialValues: {
       email: "",
       firstName: "",
-      lastName: "B",
+      lastName: "",
     },
-    validate,
+    // validate,
+    validationSchema: Yup.object({
+      firstName: Yup.string()
+        .max(15, "Must be 15 characters or less")
+        .required("Required"),
+      lastName: Yup.string()
+        .max(20, "Must be 20 characters or less")
+        .required("Required"),
+      email: Yup.string().email("Invalid email address").required("Required"),
+    }),
     onSubmit: (values) => {
-      console.log(JSON.stringify(values));
+      console.log(JSON.stringify(values, null, 5));
     },
   });
 
@@ -35,9 +44,10 @@ function Login() {
             name="firstName"
             type="text"
             placeholder="Enter your first name"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.firstName}
+            {...formik.getFieldProps("firstName")}
+            // onChange={formik.handleChange}
+            // onBlur={formik.handleBlur}
+            // value={formik.values.firstName}
           />
         </label>
         {formik.touched.firstName && formik.errors.firstName ? (
@@ -51,9 +61,7 @@ function Login() {
             name="lastName"
             type="text"
             placeholder="Enter your last name"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.lastName}
+            {...formik.getFieldProps("lastName")}
           />
         </label>
         {formik.touched.lastName && formik.errors.lastName ? (
@@ -67,9 +75,7 @@ function Login() {
             name="email"
             type="email"
             placeholder="Enter your email id"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
+            {...formik.getFieldProps("email")}
           />
         </label>
         {formik.touched.email && formik.errors.email ? (
@@ -117,3 +123,9 @@ export default Login;
 //That means, errors are displayed for fields that are not visited also.
 //Solution : Formik keeps track of which fields are visited. This information is stored in an object called 'touched'. The key is the field name,
 //value is either true/false. Use 'touched' property alongwith onBlur={formik.handleBlur} to each input.
+
+//BoilerPlate code is removed using formik.getFieldProps(fieldname)
+//{...formik.getFieldProps("firstName")} replaces the below
+// onChange={formik.handleChange}
+// onBlur={formik.handleBlur}
+// value={formik.values.firstName}
