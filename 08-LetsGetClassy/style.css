@@ -364,11 +364,14 @@ a {
 /* Error page CSS End */
 
 /* About us page CSS Start */
-.about,
 .login,
 .contact {
   background-color: var(--main-area);
   height: 94.5vh;
+}
+.about {
+  background-color: var(--main-area);
+  height: 72.3vh;
 }
 .about-container {
   display: flex;
@@ -395,15 +398,24 @@ a {
   padding-left: 20px;
 }
 .about-user-container {
-  margin: 0 0 0 20px;
+  background-color: var(--main-area);
   border-radius: 10px;
-  width: 320px;
   font-size: 1rem;
   font-weight: 300;
   border: 2px solid lightgray;
-  /* box-shadow: -1px 4px 20px 14px rgba(0, 0, 0, 0.2); */
+  box-shadow: -1px 5px 30px 5px rgba(42, 42, 42, 0.2);
   padding: 20px;
 }
+.user-card {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.user-card > div > img {
+  border: 2px solid var(--white);
+  border-radius: 10px;
+}
+
 /* About us page CSS End */
 
 /* Contact form CSS Start */
