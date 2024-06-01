@@ -12,7 +12,7 @@ const TYPE_KEY_RESTAURANT =
   "type.googleapis.com/swiggy.presentation.food.v2.Restaurant";
 const TYPE_KEY_MENU_ITEM =
   "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory";
-
+const GIT_API = "https://api.github.com/users/MadhulikaSingh02";
 export {
   SWIGGY_APP_URL,
   IMAGE_CDN_URL,
@@ -20,4 +20,5 @@ export {
   RESTAURANT_MENU_API_URL,
   TYPE_KEY_RESTAURANT,
   TYPE_KEY_MENU_ITEM,
+  GIT_API,
 };
