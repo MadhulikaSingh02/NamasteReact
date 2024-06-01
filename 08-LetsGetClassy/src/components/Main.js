@@ -23,6 +23,12 @@ export default Main = () => {
   //Page loads->Initial Render->Inside useEffect callback API called ->Re-render
   useEffect(() => {
     getRestaurants();
+    // const timer = setInterval(() => {
+    //   console.log("Useeffect set interval");
+    // }, 1000);
+    // return () => {
+    //   clearInterval(timer);
+    // };
   }, []);
 
   //function to fetch SWIGGY Data
