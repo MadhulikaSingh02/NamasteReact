@@ -2,6 +2,7 @@
 //Extends ReactComponent makes this class a React Class Component
 import React from "react";
 //or import {Component} from 'react' ->then extends Component
+import { GIT_API } from "../../utils/constants";
 
 class UserClass extends React.Component {
   //CC must have render() that returns JSX.Diff between FC
@@ -10,37 +11,51 @@ class UserClass extends React.Component {
   constructor(props) {
     super(props);
 
-    //creating state variables-
-    //this.state has special meaning
+    //creating state variables-this.state has special meaning
     this.state = {
-      count: 0,
+      userInfo: {
+        //we may give some dummy data to our state variable
+        name: "Default",
+        bio: "some text",
+      },
     };
-    console.log("Child constructor");
+
     //this.name = this.props.name; or do the destructing in the render()
   }
-  componentDidMount() {
-    console.log("Child Component Did Mount");
+  async componentDidMount() {
+    const response = await fetch(GIT_API);
+    const data = await response.json();
+
+    this.setState({
+      userInfo: data,
+    });
+  }
+
+  componentDidUpdate() {
+    this.interval = setInterval(() => {
+      // console.log("Inside mount update");
+    }, 1000);
+  }
+
+  componentWillUnmount() {
+    // console.log("UnMounting");
+    clearInterval(this.interval);
   }
   render() {
-    const { name } = this.props;
-    const { count } = this.state;
-    console.log("Child render");
+    const { userInfo } = this.state;
+    // debugger;
+
     return (
       <div className="user-card">
-        <h4>{name}</h4>
-        <h4>Location: Kelowna, Canada</h4>
-        <h4>Software Developer</h4>
-        <h5>Count-{count}</h5>
-        <button
-          onClick={() => {
-            //update SV -Never update SV directly using assignment
-            this.setState({
-              count: this.state.count + 1,
-            });
-          }}
-        >
-          Inc-{count}
-        </button>
+        <div>
+          <h4>{userInfo.name}</h4>
+          <h4>Location: Canada</h4>
+          <h4>Github: {userInfo.url}</h4>
+          <h4>{userInfo.bio}</h4>
+        </div>
+        <div>
+          <img src={userInfo.avatar_url} />
+        </div>
       </div>
     );
   }
