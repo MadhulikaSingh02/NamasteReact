@@ -18,7 +18,9 @@ const AppLayout = () => {
       {/* if path=/, then render Body  */}
       {/* if path=/about, then render About */}
       <Outlet />
-      {/*Outlet must be used in the parent route element to render its child route element */}
+      {/*Outlet must be used in the parent route element to render its child route element 
+      The Outlet component renders the matching child routes with its corresponding component
+      from the parent's collection of children.  */}
       <Footer />
     </div>
   );
