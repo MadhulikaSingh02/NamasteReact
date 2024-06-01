@@ -32,18 +32,16 @@ import { SWIGGY_APP_URL } from "../../utils/constants";
 export default class About extends Component {
   constructor(props) {
     super(props);
-    console.log("About Constructor");
+    // console.log("About Constructor");
   }
 
   componentDidMount() {
-    console.log("About Did Mount");
+    // console.log("About Did Mount");
     // const response = await fetch(SWIGGY_APP_URL);
     // const json = await response.json();
-
     // console.log(json);
   }
   render() {
-    console.log("About Render");
     return (
       <div>
         <div className="about-container about ">
@@ -56,15 +54,15 @@ export default class About extends Component {
               liking!
             </h3>
             {/* <div className="about-user-container">
-                <User name={"Madhu Singh"} />
-              </div> */}
-            <div className="about-user-container">
-              <UserClass name={"Madhulika S"} />
-            </div>
+              <User name={"Madhu Singh"} />
+            </div> */}
           </div>
           <div className="about-right">
             <img src={food_pizza} alt="Food Image" />
           </div>
+        </div>
+        <div className="about-user-container">
+          <UserClass />
         </div>
       </div>
     );
