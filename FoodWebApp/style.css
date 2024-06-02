@@ -1,0 +1,700 @@
+/* Select all CSS Start*/
+* {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  font-family: Arial;
+}
+
+/* all link CSS */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Select all CSS End*/
+
+/* create global variable with :root selector Start*/
+:root {
+  --header-bg-color: #87bba2;
+  --footer-bg-color: #87bba2;
+  --input-bg: #f2f2f2;
+  --input-bg-focus: #dbdbdb;
+  --main-area: #c9e4ca;
+  --app-name: #243119;
+  --text-color: #364958;
+  --orange: #d97919;
+  --light-orange: #ffaf60;
+  --dark-orange: #c26100;
+  --x-dark-orange: rgb(157, 42, 1);
+  --light-black: rgb(23, 23, 23);
+  --light-blue: #0463ac;
+  --dark-blue: #070062;
+  --light-text-color: #3b6064;
+  --light-green: #96be8c;
+  --dark-green: #629460;
+  --white: #fff;
+  --light-red: rgb(236, 56, 56);
+  --custom-messages: #551a8b;
+}
+/* create global variable with :root selector End*/
+
+/* Header CSS Start*/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100vw;
+  height: 80px;
+  background-color: var(--header-bg-color);
+  box-shadow: -1px 4px 20px 14px rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  overflow-y: hidden;
+}
+
+.logo {
+  padding: 10px 0 10px 15px;
+  width: 100px;
+}
+.logo img {
+  width: 100%;
+}
+.app-name {
+  color: var(--app-name);
+  font-style: italic;
+  font-size: larger;
+  font-weight: bolder;
+  margin-left: 5rem;
+}
+/* nav items CSS start*/
+.nav-items {
+  width: 20vw;
+}
+
+.nav-items > ul {
+  list-style-type: none;
+  display: flex;
+  margin-right: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-items > ul > li {
+  padding: 10px;
+}
+
+.nav-items > ul > li:hover {
+  background-color: var(--dark-green);
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.nav-items > ul > li .logout-btn,
+.nav-items > ul > li .login-btn {
+  color: var(--text-color);
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  font-size: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* nav items CSS End*/
+/* Header CSS End*/
+
+/* Main CSS Start*/
+.main {
+  background-color: var(--main-area);
+}
+/* search container CSS Start*/
+.search-container {
+  margin: 100px auto 20px;
+  text-align: center;
+  max-width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-container .search-input {
+  width: 20%;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  background-color: var(--white);
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  padding: 14px 15px 14px 20px;
+  border: 1px solid #aabcca;
+  border-right: 0;
+  color: var(--text-color);
+  outline: none;
+  font-size: medium;
+}
+
+.search-container .search-btn {
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+  background-color: var(--dark-orange);
+  /* box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08); */
+  color: var(--white);
+  padding: 15px 22px;
+  /* margin-left: -4px; */
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.filter-btn {
+  font-size: medium;
+  border: none;
+  cursor: pointer;
+  width: 30rem;
+  height: 2.8rem;
+  margin-left: 3rem;
+}
+.search-container .search-btn:hover {
+  background-color: var(--dark-green);
+}
+
+/* Search error message css Start*/
+.error-container {
+  text-align: center;
+  padding: 0.25rem 0;
+  background-color: var(--main-area);
+  font-size: large;
+  font-weight: 600;
+  color: var(--custom-messages);
+}
+/* Search error message css End*/
+/* search container CSS End*/
+
+/* Restaurant cards CSS Start*/
+.res-container {
+  width: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  min-height: 76vh;
+  /* align-self: stretch; */
+}
+
+.res-card {
+  width: 240px;
+  margin: 1rem;
+  border-radius: 5px;
+  box-shadow: -1px 5px 30px 5px rgba(42, 42, 42, 0.2);
+  padding: 10px;
+  cursor: pointer;
+}
+
+.res-card:hover {
+  transform: scale(1.05);
+}
+
+.res-card > img {
+  width: 100%;
+  /* max-width: 100px; */
+  border-radius: 10px;
+}
+.res-card > h3 {
+  color: var(--text-color);
+  margin-bottom: 3px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.res-card > h5 {
+  font-weight: bold;
+  color: #4e878c;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.res-card > h4 {
+  font-weight: bold;
+  color: var(--light-text-color);
+  margin-top: 3px;
+}
+.res-card > span {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.res-card > span > h4 {
+  font-weight: bolder;
+  font-size: 0.75rem;
+  padding: 0 2px 0;
+  margin-top: 10px;
+  color: #4e878c;
+}
+
+.res-card > span > h4:first-child {
+  display: flex;
+  align-items: center;
+  background-color: var(--light-green);
+  border-radius: 5px;
+  color: var(--white);
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.res-card > span > h4:first-child .fa-star {
+  font-size: 0.5rem;
+  padding: 0 5px 3px 0;
+}
+/* Restaurant cards CSS End*/
+
+/* footer CSS Start*/
+.footer {
+  background-color: var(--footer-bg-color);
+  text-align: center;
+  padding: 1rem;
+  font-weight: 400;
+  font-size: 0.9rem;
+  color: var(--light-text-color);
+}
+
+.footer a,
+.footer span {
+  color: var(--text-color);
+  padding: 0.5rem;
+}
+/* footer CSS End*/
+
+/*Shimmer Card CSS Start*/
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  background-color: var(--main-area);
+  width: auto;
+  height: 100vh;
+}
+.shimmer-card {
+  flex-basis: 240px;
+  margin: 1rem;
+  border-radius: 5px;
+  box-shadow: -1px 5px 30px 5px rgba(42, 42, 42, 0.2);
+  padding: 10px;
+  height: 35vh;
+}
+.shimmer-card .shimmer-img {
+  width: 100%;
+  height: 100px;
+  border-radius: 10px;
+}
+.shimmer-cuisines,
+.shimmer-info {
+  width: 100%;
+  margin-top: 18px;
+  height: 1rem;
+}
+
+.animation {
+  animation-name: shimmer;
+  animation-duration: 3s;
+  /* animation-delay: 1s; */
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  background: linear-gradient(to right, #e6e6e6 5%, #cccccc 25%, #e6e6e6 35%);
+  background-size: 1000px 100%;
+}
+@keyframes shimmer {
+  from {
+    background-position: -500px 0;
+  }
+  to {
+    background-position: 500px 0;
+  }
+}
+/*Animation to Shimmer Component Card and Menu card End*/
+/*Shimmer Card CSS End*/
+/* Main CSS End*/
+
+/*Menu Shimmer CSS Start*/
+.shimmer-menu-container {
+  background-color: var(--main-area);
+  width: auto;
+}
+
+.shimmer-res-menu {
+  width: 700px;
+  margin: 0 auto;
+  position: relative;
+  top: 100px;
+}
+
+/*Menu Shimmer CSS End*/
+/* Error page CSS Start */
+.error-page {
+  background-color: var(--main-area);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.error-page h3,
+.error-page p {
+  padding-top: 10px;
+}
+.error-data {
+  opacity: 0.7;
+}
+.error-home {
+  background-color: var(--dark-orange);
+  color: var(--white);
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.error-home:hover {
+  background-color: var(--dark-green);
+}
+/* Error page CSS End */
+
+/* About us page CSS Start */
+.login,
+.contact {
+  background-color: var(--main-area);
+  height: 94.5vh;
+}
+.about {
+  background-color: var(--main-area);
+  height: 72.3vh;
+}
+.about-container {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  color: var(--light-text-color);
+}
+.about-left h1 {
+  font-size: 70px;
+}
+.about-left h1 span {
+  background-color: var(--light-green);
+  padding: 0 10px;
+  border-radius: 15px;
+  color: var(--app-name);
+}
+.about-left h3 {
+  font-size: 25px;
+  padding-top: 10px;
+  font-style: italic;
+}
+.about-right {
+  padding-left: 20px;
+}
+.about-user-container {
+  background-color: var(--main-area);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 300;
+  border: 2px solid lightgray;
+  box-shadow: -1px 5px 30px 5px rgba(42, 42, 42, 0.2);
+  padding: 20px;
+}
+.user-card {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.user-card > div > img {
+  border: 2px solid var(--white);
+  border-radius: 10px;
+}
+
+/* About us page CSS End */
+
+/* Contact form CSS Start */
+.form-textarea {
+  width: 100%;
+  height: 6rem;
+  outline: 0;
+  background: var(--input-bg);
+  border-radius: 5px;
+  margin: 0 0 15px;
+  padding: 0.75rem;
+  border: 1px solid #aabcca;
+  color: var(--text-color);
+  outline: none;
+  font-size: medium;
+}
+
+/* Contact form CSS End */
+
+/* Login form CSS Start*/
+.login-container,
+.contact-container {
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  color: var(--light-text-color);
+}
+
+.login-form,
+.contact-form {
+  width: 28vw;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: -1px 14px 20px 14px rgba(0, 0, 0, 0.2);
+}
+.login-form span,
+.contact-form span {
+  font-size: 40px;
+  color: #4b6cb7;
+  margin-bottom: 25px;
+  display: block;
+  text-align: center;
+  border-bottom: 4px solid var(--light-blue);
+}
+.contact-message {
+  font-size: 1.5rem;
+  color: #4b6cb7;
+  margin: 25px 0;
+  /* display: block; */
+  text-align: center;
+}
+.login-form input,
+.contact-form input {
+  outline: 0;
+  background: var(--input-bg);
+  width: 100%;
+  border-radius: 5px;
+  margin: 0 0 15px;
+  padding: 15px;
+  border: 1px solid #aabcca;
+  color: var(--text-color);
+  outline: none;
+  font-size: medium;
+}
+
+.login-form input:focus,
+.contact-form input:focus {
+  background: var(--input-bg-focus);
+}
+
+.login-form button,
+.contact-form button {
+  background-color: var(--dark-orange);
+  width: 100%;
+  border-radius: 5px;
+  padding: 15px;
+  font-size: medium;
+  /* -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease; */
+  color: var(--white);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.login-form button:hover,
+.login-form button:active,
+.contact-form button:hover {
+  background-color: var(--dark-green);
+}
+
+.login-error,
+.contact-error {
+  margin: -10px 0 15px;
+  font-size: large;
+  font-weight: 600;
+  color: var(--custom-messages);
+}
+/* Login form CSS End*/
+
+/*Restaurant Menu Start*/
+.restaurant-menu-container {
+  margin-top: 80px;
+  min-height: 80vh;
+  width: auto;
+  background-color: var(--main-area);
+}
+/*Restaurant Banner Start*/
+.r-banner {
+  display: flex;
+  height: 200px;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--light-text-color);
+  color: var(--white);
+}
+.r-img {
+  width: 250px;
+  height: 170px;
+  border-radius: 5px;
+}
+.r-banner-details {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+.r-banner-details > h2 {
+  font-size: 40px;
+  font-weight: 300;
+}
+.r-banner-details > p {
+  opacity: 0.7;
+  font-size: 15px;
+}
+.r-rating-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  font-weight: 500;
+  font-size: 1rem;
+  width: 25vw;
+  opacity: 0.7;
+}
+
+.r-rating {
+  display: flex;
+  align-items: center;
+  padding: 5px 8px;
+  gap: 5px;
+  background-color: var(--dark-green);
+  border-radius: 5px;
+}
+.r-total-rating {
+  margin-left: -1.5rem;
+}
+/*Restaurant Banner End*/
+
+/*Restaurant Categories Start*/
+.menu-container {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.category-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  font-size: 25px;
+  font-weight: 300;
+  border-bottom: 4px solid var(--light-blue);
+}
+.visible-arrows-down,
+.visible-arrows-up {
+  border: none;
+  background-color: transparent;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+/*Restaurant Categories End*/
+
+/*Restaurant Menu Items Start*/
+/* .category-menu-items {//do not use this,because hidden elements are still alive.Instead use conditional rendering
+  visibility: hidden;
+  display: none;
+} */
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: var(--light-green);
+  color: var(--white);
+  border-radius: 10px;
+}
+.item-description {
+  color: var(--text-color);
+  width: 450px;
+  margin-right: 10px;
+  font-weight: 300;
+}
+.menu-item:hover {
+  cursor: pointer;
+  box-shadow: 9px 6px 11px 0px grey;
+}
+.menu-item h3 {
+  color: var(--text-color);
+}
+
+.menu-item img {
+  width: 220px;
+  height: 200px;
+}
+/*Restaurant Menu Items End*/
+/*Restaurant Menu End*/
+
+/*Veg only Toggle start*/
+.switch-container {
+  display: flex;
+  align-items: center;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin: 10px 10px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+/*Veg only Toggle End*/
